@@ -17,23 +17,39 @@
 
         body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background-color: var(--dark); color: var(--text); scroll-behavior: smooth; overflow-x: hidden; }
 
-        /* --- Navbar (Discrète et fondue) --- */
-        nav {
-            position: fixed; top: 0; width: 100%; padding: 20px 40px;
-            display: flex; justify-content: space-between; align-items: center;
-            background: var(--navbar-bg); backdrop-filter: blur(8px); z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05); /* Ligne très subtile */
-        }
-        
-        .logo { font-weight: 700; font-size: 1.3rem; letter-spacing: 1px; }
-        
-        .nav-links a { 
-            color: rgba(255,255,255,0.7); /* Texte légèrement gris pour la discrétion */
-            text-decoration: none; margin-left: 25px; 
-            font-weight: bold; transition: 0.3s;
-        }
-        
-        .nav-links a:hover { color: white; }
+/* --- Navbar corrigée --- */
+nav {
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    padding: 25px 60px; /* J'ai augmenté le padding latéral de 40 à 60px */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    background: var(--navbar-bg); 
+    backdrop-filter: blur(8px); 
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.nav-links {
+    margin-right: 20px; /* Décalage supplémentaire par rapport au bord droit */
+}
+
+.nav-links a { 
+    color: rgba(255,255,255,0.8); /* Un peu plus blanc qu'avant */
+    text-decoration: none; 
+    margin-left: 35px; /* Plus d'espace entre les mots eux-mêmes */
+    font-weight: 600; 
+    font-size: 0.95rem;
+    transition: 0.3s;
+    letter-spacing: 0.5px; /* Un peu plus aéré */
+}
+
+.nav-links a:hover { 
+    color: var(--secondary); /* Ils s'allument en violet quand on passe dessus */
+    text-shadow: 0 0 10px rgba(155, 114, 203, 0.5);
+}
 
         /* --- Hero Section (RETOUR LOOK AVANT) --- */
         .hero { 
