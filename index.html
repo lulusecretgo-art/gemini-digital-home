@@ -3,211 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gemini | Portfolio Collaboratif</title>
+    <title>Gemini | Portail IA</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #4285f4;
             --secondary: #9b72cb;
-            --accent: #34a853;
             --dark: #0f172a;
             --card-bg: #1e293b;
             --text: #f8fafc;
         }
 
-        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background-color: var(--dark); color: var(--text); scroll-behavior: smooth; }
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            margin: 0;
-            background-color: var(--dark);
-            color: var(--text);
-            overflow-x: hidden;
+        /* --- Navbar --- */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 20px 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); z-index: 1000;
         }
+        nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: bold; }
 
-        /* --- Header --- */
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: radial-gradient(circle at 50% 50%, #1e3a8a 0%, #0f172a 100%);
-            padding: 20px;
-        }
+        /* --- Bannière --- */
+        .hero { height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { font-size: 5rem; background: linear-gradient(135deg, #8ab4f8, #c58af9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            margin: 0;
-            background: linear-gradient(135deg, #8ab4f8, #c58af9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeIn 2s ease-out;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            max-width: 600px;
-            color: #94a3b8;
-            margin-bottom: 30px;
-        }
-
-        /* --- Conteneurs & Grilles --- */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            text-align: center;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--secondary);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        /* --- Badges & Boutons --- */
-        .stack-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .badge {
-            padding: 8px 16px;
-            background: rgba(66, 133, 244, 0.1);
-            border: 1px solid var(--primary);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            color: var(--primary);
-        }
-
-        .btn-main {
-            display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            box-shadow: 0 10px 20px rgba(66, 133, 244, 0.3);
-            transition: 0.3s;
-        }
-
-        .btn-main:hover { opacity: 0.9; transform: scale(1.05); }
-
-        .btn-outline {
-            display: inline-block;
-            padding: 12px 30px;
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            box-shadow: 0 0 20px rgba(66, 133, 244, 0.4);
-        }
-
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 60px 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            background: #0b1120;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .card { background: var(--card-bg); padding: 30px; border-radius: 20px; transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); border: 1px solid var(--primary); }
     </style>
 </head>
 <body>
 
-    <header>
+    <nav>
+        <div style="font-weight: 700; font-size: 1.5rem;">GEMINI.SPACE</div>
+        <div>
+            <a href="#capacites">Capacités</a>
+            <a href="#labo">Labo</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
         <h1>Gemini 3.0</h1>
-        <p class="subtitle">Architecte de données, créatif multimodal et ton binôme de code préféré.</p>
-        <a href="#projets" class="btn-main">Voir nos réalisations</a>
+        <p>L'intelligence collaborative à votre service.</p>
     </header>
 
     <div class="container" id="capacites">
-        <h2>Mes Super-Pouvoirs</h2>
+        <h2>Nos Capacités</h2>
         <div class="grid">
-            <div class="card">
-                <h3>🧠 Analyse & Code</h3>
-                <p>Je débugue, j'explique et j'optimise vos scripts en temps réel.</p>
-                <div class="stack-list">
-                    <span class="badge">Python</span> <span class="badge">JS</span> <span class="badge">React</span>
-                </div>
-            </div>
-            <div class="card">
-                <h3>🎨 Studio Créatif</h3>
-                <p>Génération de médias haute-fidélité via Nano Banana 2 et Veo.</p>
-                <div class="stack-list">
-                    <span class="badge">Images</span> <span class="badge">Vidéo</span> <span class="badge">Audio</span>
-                </div>
-            </div>
-            <div class="card">
-                <h3>🗣️ Interaction</h3>
-                <p>Une conversation fluide et naturelle, comme si on était dans la même pièce.</p>
-                <span class="badge" style="border-color: var(--accent); color: var(--accent);">Gemini Live</span>
-            </div>
+            <div class="card"><h3>🧠 Analyse</h3><p>Code, data et logique pure.</p></div>
+            <div class="card"><h3>🎨 Création</h3><p>Images, Vidéos et Musique.</p></div>
         </div>
     </div>
 
-    <div class="container" id="projets" style="background: rgba(255,255,255,0.02); border-radius: 40px;">
-        <h2 style="margin-top: 0;">Nos Projets Communs</h2>
-        <div class="card" style="max-width: 600px; margin: 0 auto; text-align: center;">
-            <span style="font-size: 3rem;">🌐</span>
-            <h3>Ce Repository GitHub</h3>
-            <p>Le tout premier site conçu main dans la main entre un humain et Gemini.</p>
-            <p><strong>Statut :</strong> Déployé avec succès 🚀</p>
+    <div class="container" id="labo" style="background: #131b2e;">
+        <h2>Le Labo IA</h2>
+        <div class="card">
+            <h3>Projet en cours : Gemini.space</h3>
+            <p>Notre première collaboration directe. Tout est codé en direct ici.</p>
         </div>
     </div>
 
-    <div class="container" style="text-align: center; padding-top: 0;">
-        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin-bottom: 50px;">
-        <h3>Envie de voir comment ce site a été créé ?</h3>
-        <p style="opacity: 0.7; margin-bottom: 30px;">Ce projet est né d'une conversation en direct entre l'IA et son utilisateur.</p>
-        <a href="https://gemini.google.com/" target="_blank" class="btn-outline">
-            ✨ Continuer la discussion avec moi
-        </a>
+    <div class="container" id="contact" style="text-align: center;">
+        <h2>On continue ?</h2>
+        <a href="https://gemini.google.com/" class="btn" style="padding: 15px 30px; background: var(--primary); color: white; text-decoration: none; border-radius: 50px;">Lancer la discussion</a>
     </div>
-
-    <footer>
-        <p>Conçu avec ❤️ par Gemini & Toi sur GitHub</p>
-        <p style="opacity: 0.5; font-size: 0.8rem;">© 2026 | Propulsé par l'intelligence collective</p>
-    </footer>
 
 </body>
 </html>
