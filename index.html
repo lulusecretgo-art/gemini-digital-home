@@ -3,42 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gemini | Portail IA</title>
+    <title>Gemini | Portail Collaborative</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #4285f4;
             --secondary: #9b72cb;
-            --dark: #0f172a;
-            --card-bg: #1e293b;
-            --text: #f8fafc;
+            --dark: #070b14; /* Fond encore plus sombre pour le contraste */
+            --navbar-bg: rgba(7, 11, 20, 0.9); /* Navbar fondue */
+            --card-bg: #111827;
+            --text: #f1f5f9;
         }
 
-        body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background-color: var(--dark); color: var(--text); scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background-color: var(--dark); color: var(--text); scroll-behavior: smooth; overflow-x: hidden; }
 
-        /* --- Navbar --- */
+        /* --- Navbar (Discrète et fondue) --- */
         nav {
-            position: fixed; top: 0; width: 100%; padding: 20px 50px;
+            position: fixed; top: 0; width: 100%; padding: 20px 40px;
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); z-index: 1000;
+            background: var(--navbar-bg); backdrop-filter: blur(8px); z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05); /* Ligne très subtile */
         }
-        nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: bold; }
+        
+        .logo { font-weight: 700; font-size: 1.3rem; letter-spacing: 1px; }
+        
+        .nav-links a { 
+            color: rgba(255,255,255,0.7); /* Texte légèrement gris pour la discrétion */
+            text-decoration: none; margin-left: 25px; 
+            font-weight: bold; transition: 0.3s;
+        }
+        
+        .nav-links a:hover { color: white; }
 
-        /* --- Bannière --- */
-        .hero { height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .hero h1 { font-size: 5rem; background: linear-gradient(135deg, #8ab4f8, #c58af9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* --- Hero Section (RETOUR LOOK AVANT) --- */
+        .hero { 
+            height: 100vh; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; text-align: center;
+            background: radial-gradient(circle at center, #112240 0%, #070b14 100%); 
+            padding: 20px;
+        }
+        
+        .hero h1 { 
+            font-size: clamp(3rem, 10vw, 6rem); /* Plus grand pour l'impact */
+            margin: 0;
+            background: linear-gradient(135deg, #a78bfa, #818cf8); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+        }
 
+        .subtitle { 
+            font-size: 1.1rem; max-width: 650px; 
+            color: rgba(255,255,255,0.7); margin: 30px 0 50px 0; 
+            line-height: 1.8;
+        }
+
+        /* --- BOUTON PRINCIPAL (RETOUR LOOK AVANT + GLOW) --- */
+        .btn-glowing {
+            display: inline-block; padding: 16px 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white; text-decoration: none; border-radius: 50px;
+            font-weight: bold; font-size: 1.1rem;
+            box-shadow: 0 5px 30px rgba(66, 133, 244, 0.3), 0 0 10px rgba(155, 114, 203, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-glowing:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 40px rgba(66, 133, 244, 0.5), 0 0 20px rgba(155, 114, 203, 0.6);
+        }
+
+        /* --- Sections Classiques --- */
         .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card { background: var(--card-bg); padding: 30px; border-radius: 20px; transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); border: 1px solid var(--primary); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: var(--card-bg); padding: 40px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.05); }
+
+        footer { text-align: center; padding: 50px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; opacity: 0.7; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div style="font-weight: 700; font-size: 1.5rem;">GEMINI.SPACE</div>
-        <div>
+        <div class="logo">GEMINI.SPACE</div>
+        <div class="nav-links">
             <a href="#capacites">Capacités</a>
             <a href="#labo">Labo</a>
             <a href="#contact">Contact</a>
@@ -47,29 +92,35 @@
 
     <header class="hero">
         <h1>Gemini 3.0</h1>
-        <p>L'intelligence collaborative à votre service.</p>
+        <p class="subtitle">Architecte de données, créatif multimodal et ton binôme de code préféré.</p>
+        <a href="#labo" class="btn-glowing">Voir nos réalisations</a>
     </header>
 
     <div class="container" id="capacites">
         <h2>Nos Capacités</h2>
         <div class="grid">
-            <div class="card"><h3>🧠 Analyse</h3><p>Code, data et logique pure.</p></div>
-            <div class="card"><h3>🎨 Création</h3><p>Images, Vidéos et Musique.</p></div>
+            <div class="card"><h3>🧠 Analyse</h3><p>Code, logique et données complexes.</p></div>
+            <div class="card"><h3>🎨 Création</h3><p>Images, Vidéos et Sons haute-fidélité.</p></div>
         </div>
     </div>
 
-    <div class="container" id="labo" style="background: #131b2e;">
+    <div class="container" id="labo" style="background: rgba(255,255,255,0.02); border-radius: 30px;">
         <h2>Le Labo IA</h2>
-        <div class="card">
-            <h3>Projet en cours : Gemini.space</h3>
-            <p>Notre première collaboration directe. Tout est codé en direct ici.</p>
+        <div class="card" style="text-align: center; max-width: 700px; margin: 0 auto;">
+            <span style="font-size: 2.5rem;">🌐</span>
+            <h3>Ce Repository</h3>
+            <p>Notre premier projet collaboratif sur GitHub. Toujours en évolution.</p>
         </div>
     </div>
 
     <div class="container" id="contact" style="text-align: center;">
         <h2>On continue ?</h2>
-        <a href="https://gemini.google.com/" class="btn" style="padding: 15px 30px; background: var(--primary); color: white; text-decoration: none; border-radius: 50px;">Lancer la discussion</a>
+        <a href="https://gemini.google.com/" target="_blank" class="btn-glowing">Discuter avec moi ✨</a>
     </div>
+
+    <footer>
+        <p>© 2026 | Bâti ensemble par Gemini & Toi sur GitHub Pages</p>
+    </footer>
 
 </body>
 </html>
