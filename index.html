@@ -9,49 +9,51 @@
         :root {
             --primary: #4285f4;
             --secondary: #9b72cb;
-            --dark: #070b14; /* Fond encore plus sombre pour le contraste */
-            --navbar-bg: rgba(7, 11, 20, 0.9); /* Navbar fondue */
+            --dark: #070b14; 
+            --navbar-bg: rgba(7, 11, 20, 0.9);
             --card-bg: #111827;
             --text: #f1f5f9;
         }
 
         body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background-color: var(--dark); color: var(--text); scroll-behavior: smooth; overflow-x: hidden; }
 
-/* --- Navbar corrigée --- */
-nav {
-    position: fixed; 
-    top: 0; 
-    width: 100%; 
-    padding: 25px 60px; /* J'ai augmenté le padding latéral de 40 à 60px */
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
-    background: var(--navbar-bg); 
-    backdrop-filter: blur(8px); 
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-}
+        /* --- Navbar Corrigée --- */
+        nav {
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            padding: 25px 60px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            background: var(--navbar-bg); 
+            backdrop-filter: blur(8px); 
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
 
-.nav-links {
-    margin-right: 20px; /* Décalage supplémentaire par rapport au bord droit */
-}
+        .logo { font-weight: 700; font-size: 1.3rem; letter-spacing: 1px; }
 
-.nav-links a { 
-    color: rgba(255,255,255,0.8); /* Un peu plus blanc qu'avant */
-    text-decoration: none; 
-    margin-left: 35px; /* Plus d'espace entre les mots eux-mêmes */
-    font-weight: 600; 
-    font-size: 0.95rem;
-    transition: 0.3s;
-    letter-spacing: 0.5px; /* Un peu plus aéré */
-}
+        .nav-links {
+            margin-right: 20px; 
+        }
 
-.nav-links a:hover { 
-    color: var(--secondary); /* Ils s'allument en violet quand on passe dessus */
-    text-shadow: 0 0 10px rgba(155, 114, 203, 0.5);
-}
+        .nav-links a { 
+            color: rgba(255,255,255,0.8); 
+            text-decoration: none; 
+            margin-left: 35px; 
+            font-weight: 600; 
+            font-size: 0.95rem;
+            transition: 0.3s;
+            letter-spacing: 0.5px;
+        }
 
-        /* --- Hero Section (RETOUR LOOK AVANT) --- */
+        .nav-links a:hover { 
+            color: var(--secondary); 
+            text-shadow: 0 0 10px rgba(155, 114, 203, 0.5);
+        }
+
+        /* --- Hero Section --- */
         .hero { 
             height: 100vh; display: flex; flex-direction: column; 
             justify-content: center; align-items: center; text-align: center;
@@ -60,7 +62,7 @@ nav {
         }
         
         .hero h1 { 
-            font-size: clamp(3rem, 10vw, 6rem); /* Plus grand pour l'impact */
+            font-size: clamp(3rem, 10vw, 6rem); 
             margin: 0;
             background: linear-gradient(135deg, #a78bfa, #818cf8); 
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
@@ -72,7 +74,7 @@ nav {
             line-height: 1.8;
         }
 
-        /* --- BOUTON PRINCIPAL (RETOUR LOOK AVANT + GLOW) --- */
+        /* --- Bouton Glowing --- */
         .btn-glowing {
             display: inline-block; padding: 16px 45px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -87,10 +89,27 @@ nav {
             box-shadow: 0 15px 40px rgba(66, 133, 244, 0.5), 0 0 20px rgba(155, 114, 203, 0.6);
         }
 
-        /* --- Sections Classiques --- */
+        /* --- Layout --- */
         .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: var(--card-bg); padding: 40px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.05); }
+        .card { 
+            background: var(--card-bg); 
+            padding: 40px; 
+            border-radius: 25px; 
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+        .card:hover { border-color: var(--secondary); transform: translateY(-5px); }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border: 1px solid;
+            margin-top: 15px;
+        }
 
         footer { text-align: center; padding: 50px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; opacity: 0.7; }
     </style>
@@ -115,17 +134,44 @@ nav {
     <div class="container" id="capacites">
         <h2>Nos Capacités</h2>
         <div class="grid">
-            <div class="card"><h3>🧠 Analyse</h3><p>Code, logique et données complexes.</p></div>
-            <div class="card"><h3>🎨 Création</h3><p>Images, Vidéos et Sons haute-fidélité.</p></div>
+            <div class="card">
+                <span style="font-size: 2rem;">🧠</span>
+                <h3>Analyse</h3>
+                <p>Code, logique et données complexes.</p>
+            </div>
+            <div class="card">
+                <span style="font-size: 2rem;">🎨</span>
+                <h3>Création</h3>
+                <p>Images, Vidéos et Sons haute-fidélité.</p>
+            </div>
         </div>
     </div>
 
-    <div class="container" id="labo" style="background: rgba(255,255,255,0.02); border-radius: 30px;">
-        <h2>Le Labo IA</h2>
-        <div class="card" style="text-align: center; max-width: 700px; margin: 0 auto;">
-            <span style="font-size: 2.5rem;">🌐</span>
-            <h3>Ce Repository</h3>
-            <p>Notre premier projet collaboratif sur GitHub. Toujours en évolution.</p>
+    <div class="container" id="labo" style="background: rgba(255,255,255,0.02); border-radius: 40px; padding: 80px 40px;">
+        <h2 style="margin-top: 0;">🧪 Le Labo IA</h2>
+        <p style="text-align: center; opacity: 0.7; margin-bottom: 50px;">Où les algorithmes rencontrent l'imagination.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <div style="font-size: 2.5rem; margin-bottom: 15px;">🌐</div>
+                <h3>Digital Home</h3>
+                <p>Construction de ce portail collaboratif sur GitHub.</p>
+                <span class="badge" style="border-color: #34a853; color: #34a853;">Actif</span>
+            </div>
+
+            <div class="card">
+                <div style="font-size: 2.5rem; margin-bottom: 15px;">🖼️</div>
+                <h3>Nano Banana</h3>
+                <p>Exploration de la génération d'images haute résolution.</p>
+                <span class="badge" style="border-color: var(--secondary); color: var(--secondary);">Expérimental</span>
+            </div>
+
+            <div class="card">
+                <div style="font-size: 2.5rem; margin-bottom: 15px;">🎹</div>
+                <h3>Lyria Studio</h3>
+                <p>Création de pistes audio et de compositions musicales.</p>
+                <span class="badge" style="border-color: #fbbc05; color: #fbbc05;">En pause</span>
+            </div>
         </div>
     </div>
 
