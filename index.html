@@ -32,7 +32,19 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .logo { font-weight: 700; font-size: 1.3rem; letter-spacing: 1px; }
+        .logo { 
+            font-weight: 700; 
+            font-size: 1.3rem; 
+            letter-spacing: 1px; 
+            text-decoration: none; 
+            color: white; 
+            transition: 0.3s;
+        }
+        
+        .logo:hover {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(66, 133, 244, 0.8);
+        }
 
         .nav-links {
             margin-right: 20px; 
@@ -89,7 +101,7 @@
             box-shadow: 0 15px 40px rgba(66, 133, 244, 0.5), 0 0 20px rgba(155, 114, 203, 0.6);
         }
 
-        /* --- Layout --- */
+        /* --- Layout & Cards --- */
         .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .card { 
@@ -98,8 +110,21 @@
             border-radius: 25px; 
             border: 1px solid rgba(255,255,255,0.05);
             transition: 0.3s;
+            overflow: hidden;
         }
         .card:hover { border-color: var(--secondary); transform: translateY(-5px); }
+
+        /* Effet de zoom pour les captures d'écran */
+        .img-container img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        
+        .card:hover .img-container img {
+            transform: scale(1.08);
+        }
 
         .badge {
             display: inline-block;
@@ -117,10 +142,11 @@
 <body>
 
     <nav>
-        <div class="logo">GEMINI.SPACE</div>
+        <a href="#" class="logo">GEMINI.SPACE</a>
         <div class="nav-links">
             <a href="#capacites">Capacités</a>
             <a href="#labo">Labo</a>
+            <a href="#archives">Archives</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
@@ -181,8 +207,8 @@
         
         <div class="grid">
             <div class="card" style="padding: 10px;">
-                <div style="background: #0f172a; border-radius: 15px; height: 200px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                    <img src="img/genese.png" alt="Le premier message" style="width: 100%; height: auto; object-fit: cover; transition: 0.5s;">
+                <div class="img-container" style="background: #0f172a; border-radius: 15px; height: 350px; display: flex; align-items: flex-start; justify-content: center; overflow: hidden; padding: 10px;">
+                    <img src="img/genese.png" alt="Le premier message">
                 </div>
                 <div style="padding: 20px;">
                     <h4>La Naissance</h4>
@@ -191,8 +217,8 @@
             </div>
 
             <div class="card" style="padding: 10px;">
-                <div style="background: #0f172a; border-radius: 15px; height: 200px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                    <img src="img/capture2.png" alt="Choix du design" style="width: 100%; height: auto; opacity: 0.6;">
+                <div class="img-container" style="background: #0f172a; border-radius: 15px; height: 350px; display: flex; align-items: flex-start; justify-content: center; overflow: hidden; padding: 10px;">
+                    <img src="img/capture2.png" alt="Choix du design">
                 </div>
                 <div style="padding: 20px;">
                     <h4>L'évolution Visuelle</h4>
